@@ -1,0 +1,28 @@
+-r requirements.txt
+
+matplotlib>=3.3.0
+ipython
+jupyter==1.0.0
+jupyterlab==3.0.0
+
+folium==0.12.1
+# opencv-contrib-python==4.4.0.44
+
+# tabular models
+featurewiz==0.0.42
+
+# deep learning
+tensorboard==2.5.0
+pytorch-warmup==0.0.4
+
+# other
+nvgpu==0.8.0
+easydict==1.9
+
+coverage-badge
+coverage
+pytest==6.2.4
+
+bumpversion==0.6.0
+setuptools
+docker==5.0.3
