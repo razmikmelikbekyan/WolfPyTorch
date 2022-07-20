@@ -10,7 +10,7 @@ import pandas as pd
 from clearml import Logger
 from matplotlib import pyplot as plt
 
-from yield_forecasting.utils.logger import logger
+from wolf.utils.logger import logger
 from ..base_logger import BaseExperimentLogger
 from ..base_visualizer import BaseExperimentsResultVisualizer
 from ....plotting_service.classification import plot_classification_report, plot_confusion_matrix

@@ -2,13 +2,14 @@ from typing import Dict
 
 import torch
 
-from .._commons.regression import L1Loss, L2Loss, SmoothL1Loss, PinBallLoss, MDNLoss
+from .._commons.regression import L1Loss, L2Loss, SmoothL1Loss, HuberLoss, PinBallLoss, MDNLoss
 from ..base import Loss
 
 __all__ = [
     'L1Loss',
     'SmoothL1Loss',
     'L2Loss',
+    'HuberLoss',
     'PinBallLoss',
     'MDNLoss',
     'L2PinballLoss'

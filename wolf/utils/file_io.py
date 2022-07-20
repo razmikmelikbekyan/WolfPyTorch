@@ -67,9 +67,3 @@ class NumpyEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-def delete_file(file_path: str or Path):
-    """Checks and deletes the given file path."""
-    try:
-        os.remove(file_path)
-    except FileNotFoundError:
-        pass

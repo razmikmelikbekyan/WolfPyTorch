@@ -7,8 +7,6 @@ import torch.nn as nn
 from ..base import Loss
 
 
-# TODO: update the pytorch to get huber loss
-
 class L1Loss(nn.L1Loss, Loss):
     """Standard L1 loss."""
     pass
@@ -21,6 +19,11 @@ class L2Loss(nn.MSELoss, Loss):
 
 class SmoothL1Loss(nn.SmoothL1Loss, Loss):
     """See: https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html#torch.nn.SmoothL1Loss."""
+    pass
+
+
+class HuberLoss(nn.HuberLoss, Loss):
+    """See: https://pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html#torch.nn.HuberLoss"""
     pass
 
 
@@ -79,7 +82,6 @@ class MDNLoss(Loss):
     ONE_DIV_SQRT_2PI = 1.0 / math.sqrt(2 * math.pi)
     LOG_2PI = math.log(2 * math.pi)
 
-    # TODO: remove try except
     @classmethod
     def gaussian_probability(cls, target: torch.Tensor, mu: torch.Tensor, sigma: torch.Tensor):
         """Calculates gaussian cdf """

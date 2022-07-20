@@ -8,7 +8,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from yield_forecasting.utils.logger import logger
+from wolf.utils.logger import logger
 from .config import BaseExperimentConfig
 from .experiment_logging import BaseExperimentLogger
 from .parser import BaseExperimentConfigParser

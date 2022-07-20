@@ -25,7 +25,8 @@ PIXEL_LEVEL_LOSSES = {
     TaskTypes.PL_REGRESSION: {
         'L1Loss': L1Loss,
         'SmoothL1Loss': SmoothL1Loss,
-        'L2Loss': L2Loss
+        'L2Loss': L2Loss,
+        'HuberLoss': HuberLoss,
     },
     TaskTypes.PL_QUANTILE_REGRESSION: {
         'PinBallLoss': PinBallLoss,

@@ -20,11 +20,10 @@ import torch.nn as nn
 from clearml import Task, Logger, OutputModel
 from clearml.storage.helper import StorageHelper
 from torch.optim.optimizer import Optimizer
-# from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 
-from yield_forecasting.utils.file_io import NumpyEncoder
-from yield_forecasting.utils.logger import logger
+from wolf.utils.file_io import NumpyEncoder
+from wolf.utils.logger import logger
 from ..config import BaseExperimentConfig
 from ...dataset import BaseDataset
 from ...losses import Loss
@@ -88,8 +87,6 @@ class BaseExperimentLogger:
         self.images_dir.mkdir(exist_ok=True)
 
         self._metrics_keeper = defaultdict(list)
-        # self.tensorboard_dir = self.saving_dir.joinpath(self.TENSORBOARD_FOLDER)
-        # self.tb_writer = SummaryWriter(log_dir=self.tensorboard_dir)
 
         # multiprocessing staff
         manager = SyncManager()
@@ -219,7 +216,6 @@ class BaseExperimentLogger:
             json.dump(config.all_configs, f, cls=ConfigEncoder)
 
         if self.clearml_task is not None:
-            # TODO: add more here or move to config
             self.clearml_task.connect_configuration(name='run_config', configuration=config.all_configs)
             self.clearml_model.update_design(config_dict=config.model)
             hparams = config.get_hyper_params_to_log()

@@ -8,8 +8,16 @@ logger.debug("Encountered debug case")
 """
 import logging
 
-from intelinair_utils import set_standard_logging_config
+logger = logging.getLogger('wolf')
+consoleHandler = logging.StreamHandler()
+consoleHandler.setLevel(logging.INFO)
 
-set_standard_logging_config()
+# format handlers
+formatter = logging.Formatter(
+    fmt='%(filename)s | %(lineno)d | %(funcName)s | %(asctime)s | %(levelname)s: %(message)s',
+    datefmt='%d-%b-%y %H:%M:%S'
+)
+consoleHandler.setFormatter(formatter)
 
-logger = logging.getLogger('yield_forecasting')
+# adding handlers to the logger
+logger.addHandler(consoleHandler)

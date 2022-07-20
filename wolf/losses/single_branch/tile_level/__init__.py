@@ -19,7 +19,8 @@ TILE_LEVEL_LOSSES = {
     TaskTypes.TL_REGRESSION: {
         'L1Loss': L1Loss,
         'SmoothL1Loss': SmoothL1Loss,
-        'L2Loss': L2Loss
+        'L2Loss': L2Loss,
+        'HuberLoss': HuberLoss,
     },
     TaskTypes.TL_QUANTILE_REGRESSION: {
         'PinBallLoss': PinBallLoss

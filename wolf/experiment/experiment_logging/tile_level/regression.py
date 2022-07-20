@@ -10,8 +10,8 @@ import pandas as pd
 from IPython.core.display import display
 from clearml import Logger
 
-from yield_forecasting.utils.logger import logger
-from yield_forecasting.utils.pandas_helpers import style_table
+from wolf.utils.logger import logger
+from wolf.utils.pandas_helpers import style_table
 from ..base_logger import BaseExperimentLogger
 from ..base_visualizer import BaseExperimentsResultVisualizer
 from ....plotting_service.image import plot_rgb_image

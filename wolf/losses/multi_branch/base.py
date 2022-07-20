@@ -29,7 +29,8 @@ class MultiBranchLoss(Loss):
         """Returns the last computed loss value for each branch."""
         return self._last_computed_state
 
-    def __call__(self, predictions: Dict[str, torch.Tensor],
+    def __call__(self,
+                 predictions: Dict[str, torch.Tensor],
                  targets: Dict[str, torch.Tensor],
                  **kwargs: Dict[str, Dict]) -> float:
         """

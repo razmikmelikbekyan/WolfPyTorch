@@ -3,7 +3,7 @@ from typing import List
 import torch
 import torch.nn as nn
 
-from yield_forecasting.utils.logger import logger
+from wolf.utils.logger import logger
 
 
 def model_to_device(model: nn.Module, device: str = "cuda", multi_gpu: bool = True, device_ids: List[int] = None):

@@ -4,7 +4,7 @@ from typing import Callable, Dict, Any
 import torch
 import torch.nn as nn
 
-from yield_forecasting.utils.logger import logger
+from wolf.utils.logger import logger
 
 
 def get_default_args(obj: Callable) -> Dict[str, Any]:

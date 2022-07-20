@@ -10,7 +10,7 @@ from torch.optim.lr_scheduler import _LRScheduler
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from yield_forecasting.utils.torch_helpers import to_device, detach_object
+from wolf.utils.torch_helpers import to_device, detach_object
 from ...losses import Loss
 from ...metrics import BaseEvaluator, AverageValueMeter
 from ...optimization import EPOCH_UPDATE_SCHEDULERS, METRIC_BASED_SCHEDULERS
