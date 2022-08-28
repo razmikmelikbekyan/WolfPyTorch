@@ -11,7 +11,6 @@ from IPython.core.display import display
 from clearml import Logger
 
 from wolf.utils.logger import logger
-from wolf.utils.pandas_helpers import style_table
 from ..base_logger import BaseExperimentLogger
 from ..base_visualizer import BaseExperimentsResultVisualizer
 from ....plotting_service.image import plot_rgb_image
@@ -71,7 +70,6 @@ class TLRegressionExperimentLogger(BaseExperimentLogger):
                         report_interactive=False,
                     )
                     plt.close(fig=fig)
-                    # plt.clf()
                 mp_manager.append(info)
             except Exception as e:
                 logger.warning(f'Plotting failed due to error: {e}', stack_info=True, exc_info=True)
@@ -82,11 +80,42 @@ class TLRegressionExperimentVisualizer(BaseExperimentsResultVisualizer):
 
     _figsize = TLRegressionExperimentLogger.FIG_SIZE
 
+    @staticmethod
+    def style_table(df: pd.DataFrame, axis: int, precision: int = 0):
+        properties = {
+            'font-size': '10pt',
+            'background-color': 'white',
+            'border-color': 'black',
+            'border-style': 'solid',
+            'border-width': '1px',
+            'border-collapse': 'collapse',
+            'width': '80px'
+        }
+        if precision == 0:
+            str_format = "{:.0f}"
+        elif precision == 1:
+            str_format = "{:.1f}"
+        elif precision == 2:
+            str_format = "{:.2f}"
+        elif precision == 3:
+            str_format = "{:.3f}"
+        elif precision == 4:
+            str_format = "{:.4f}"
+        else:
+            raise ValueError
+
+        return (df
+                .style
+                .set_properties(**properties)
+                .background_gradient(cmap='OrRd', axis=axis)
+                .format(str_format, subset=df.select_dtypes(include='number').columns)
+                )
+
     @classmethod
     def plot_single_epoch(cls, epoch_data: pd.Series) -> Tuple[Mapping, pd.DataFrame]:
         """Plots Regression Epoch data."""
         epoch_data, regression_report = cls._parse_epoch_data(epoch_data)
-        display(style_table(regression_report, axis=0, precision=4))
+        display(cls.style_table(regression_report, axis=0, precision=4))
         return epoch_data, regression_report
 
     @staticmethod

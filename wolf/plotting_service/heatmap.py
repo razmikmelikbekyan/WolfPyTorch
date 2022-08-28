@@ -12,60 +12,18 @@ import numpy as np
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-__all__ = ["plot_heatmap_image", "plot_heatmap_2_images"]
+__all__ = ["plot_2_heatmaps"]
 
 
-def plot_heatmap_image(image: Union[Path, str, np.ndarray],
-                       title: str,
-                       figsize: Tuple[int, int],
-                       return_figure: bool = False,
-                       min_value_to_filter: float = None,
-                       max_value_to_filter: float = None,
-                       ) -> Optional[plt.Figure]:
-    """
-    Plots a single heatmap image. It is useful function in case you want to visualize pixel-wise regression results.
-    Args:
-        image: the image array (must be a square array) or path to it
-        title: the title of the image to plot
-        figsize: the tuple of ints specifying the figure size
-        return_figure: if True returns the Figure object
-        min_value_to_filter: if given all the values in the image which are less than this value will be replaced by nan
-        max_value_to_filter: if given all the values in the image which are more than this value will be replaced by nan
-
-    Returns:
-        matplotlib.pyplot.Figure object
-    """
-    if not isinstance(image, np.ndarray):
-        image = cv2.imread(str(image), cv2.IMREAD_UNCHANGED)
-
-    filtered_image = image.copy()
-    if min_value_to_filter is not None:
-        filtered_image[filtered_image < min_value_to_filter] = np.nan
-    if max_value_to_filter is not None:
-        filtered_image[filtered_image > max_value_to_filter] = np.nan
-
-    mean = np.nanmean(filtered_image)
-
-    with plt.style.context('default'):
-        fig, ax = plt.subplots(figsize=figsize)
-        sns.heatmap(image, annot=False, ax=ax)
-        plt.title(f'{title}_mean={mean :.2f}', size=12)
-        plt.axis('off')
-        if return_figure:
-            return fig
-        else:
-            plt.show()
-
-
-def plot_heatmap_2_images(image_1: Union[Path, str, np.ndarray],
-                          image_2: Union[Path, str, np.ndarray],
-                          title_1: str,
-                          title_2: str,
-                          figsize: Tuple[int, int],
-                          min_value_to_filter: float = None,
-                          max_value_to_filter: float = None,
-                          return_figure: bool = False
-                          ) -> Optional[plt.Figure]:
+def plot_2_heatmaps(image_1: Union[Path, str, np.ndarray],
+                    image_2: Union[Path, str, np.ndarray],
+                    title_1: str,
+                    title_2: str,
+                    figsize: Tuple[int, int],
+                    min_value_to_filter: float = None,
+                    max_value_to_filter: float = None,
+                    return_figure: bool = False
+                    ) -> Optional[plt.Figure]:
     """
     Plots 2 heatmap images on the same row.
     It is useful function in case you want to visualize pixel-wise regression results: actual vs predicion.

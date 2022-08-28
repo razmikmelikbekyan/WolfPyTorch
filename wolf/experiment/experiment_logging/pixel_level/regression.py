@@ -2,16 +2,16 @@ from multiprocessing import Manager
 from pathlib import Path
 from typing import Dict, List, Optional
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from clearml import Logger
-from matplotlib import pyplot as plt
 
 from wolf.utils.logger import logger
 from ..base_logger import BaseExperimentLogger
 from ..tile_level.regression import TLRegressionExperimentVisualizer
+from ....plotting_service.heatmap import plot_2_heatmaps
 from ....plotting_service.image import plot_rgb_image
-from ....plotting_service.heatmap import plot_heatmap_2_images
 
 __all__ = [
     'PLRegressionExperimentLogger', 'PLRegressionExperimentVisualizer'
@@ -76,10 +76,9 @@ class PLRegressionExperimentLogger(BaseExperimentLogger):
                         report_image=True,
                         report_interactive=False,
                     )
-                    # plt.clf()
                     plt.close(fig=fig)
 
-                    fig = plot_heatmap_2_images(
+                    fig = plot_2_heatmaps(
                         ground_truth,
                         y_pred_saving_path,
                         title_1=f'y_true',
@@ -148,8 +147,12 @@ class PLRegressionExperimentVisualizer(TLRegressionExperimentVisualizer):
             else:
                 return input_images_df
 
-    def plot_debug_images(self, mode: str, epochs: List[int] = None,
-                          min_value_to_filter: float = None, max_value_to_filter: float = None) -> None:
+    def plot_debug_images(self,
+                          mode: str, epochs: List[int] = None,
+                          min_value_to_filter: float = None,
+                          max_value_to_filter: float = None,
+                          brightness_factor: float = 1,
+                          ) -> None:
         """Plots all debug images saved during experiment run."""
         df = self.images_df
         df = df[df['mode'] == mode]
@@ -162,10 +165,10 @@ class PLRegressionExperimentVisualizer(TLRegressionExperimentVisualizer):
                 Path(row['image_path']),
                 figsize=self._figsize,
                 title=f'Epoch={row["epoch"]}-Batch={row["batch"]}-Image={row["image_index"]}-input',
-                brightness_factor=1.5
+                brightness_factor=brightness_factor
             )
 
-            plot_heatmap_2_images(
+            plot_2_heatmaps(
                 Path(row['y_true_image_path']),
                 Path(row['y_pred_image_path']),
                 title_1=f'Epoch={row["epoch"]}-Batch={row["batch"]}-Image={row["image_index"]}-y_true',

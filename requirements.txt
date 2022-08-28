@@ -3,6 +3,7 @@ numpy~=1.23
 pandas~=1.4
 matplotlib~=3.5
 seaborn~=0.11
+ipython==8.4.0
 tqdm~=4.64.0
 
 
@@ -10,7 +11,7 @@ albumentations~=1.2
 torch==1.12.0
 torchvision==0.13.0
 timm==0.4.12
-segmentation_models_pytorch==0.2.1
+segmentation_models_pytorch==0.3.0
 torchmetrics~=0.9
 pytorch-warmup==0.0.4
 

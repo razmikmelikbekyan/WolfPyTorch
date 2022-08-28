@@ -22,7 +22,6 @@ from clearml.storage.helper import StorageHelper
 from torch.optim.optimizer import Optimizer
 from tqdm import tqdm
 
-from wolf.utils.file_io import NumpyEncoder
 from wolf.utils.logger import logger
 from ..config import BaseExperimentConfig
 from ...dataset import BaseDataset
@@ -40,6 +39,21 @@ class ConfigEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Enum):
             return obj.name
+        return json.JSONEncoder.default(self, obj)
+
+
+class NumpyEncoder(json.JSONEncoder):
+    """Special json encoder for numpy types."""
+
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.bool_):
+            return bool(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
 
