@@ -8,8 +8,8 @@ import torch
 from albumentations import Compose
 from torch.utils.data import Dataset
 
-from wolf.utils.logger import logger
 from .augmentations import initialize_augmentations
+from ..logger import logger
 
 
 class BaseDataset(Dataset, ABC):

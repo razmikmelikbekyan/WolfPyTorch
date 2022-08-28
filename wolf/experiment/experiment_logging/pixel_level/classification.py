@@ -8,9 +8,9 @@ import pandas as pd
 from clearml import Logger
 from matplotlib import pyplot as plt
 
-from wolf.utils.logger import logger
 from ..base_logger import BaseExperimentLogger
 from ..tile_level.classification import TLClassificationEpochVisualizer
+from ....logger import logger
 from ....plotting_service.image import plot_multiple_images
 
 __all__ = [

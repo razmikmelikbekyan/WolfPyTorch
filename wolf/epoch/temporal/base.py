@@ -7,7 +7,7 @@ from ..single_branch.base import SingleBranchEpochMixin
 
 class TemporalEpochMixin(SingleBranchEpochMixin):
     """Special class for temporal imagery data."""
-    
+
     IS_TEMPORAL = True
 
     @staticmethod

@@ -22,9 +22,9 @@ from clearml.storage.helper import StorageHelper
 from torch.optim.optimizer import Optimizer
 from tqdm import tqdm
 
-from wolf.utils.logger import logger
 from ..config import BaseExperimentConfig
 from ...dataset import BaseDataset
+from ...logger import logger
 from ...losses import Loss
 from ...plotting_service.classification import plot_confusion_matrix
 

@@ -10,9 +10,9 @@ import pandas as pd
 from IPython.core.display import display
 from clearml import Logger
 
-from wolf.utils.logger import logger
 from ..base_logger import BaseExperimentLogger
 from ..base_visualizer import BaseExperimentsResultVisualizer
+from ....logger import logger
 from ....plotting_service.image import plot_rgb_image
 
 __all__ = [

@@ -7,7 +7,7 @@ from torch import nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from wolf.utils.torch_helpers import to_device
+from ..helpers import to_device
 from ..single_branch.base import SingleBranchTrainEpoch, SingleBranchValidationEpoch, SingleBranchEpochMixin
 from ...losses import MultiBranchLoss
 from ...metrics import AverageValueMeter, MultiBranchEvaluator

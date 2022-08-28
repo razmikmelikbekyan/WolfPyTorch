@@ -7,9 +7,9 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 from termcolor import colored
 
-from wolf.utils.logger import logger
 from .base_logger import BaseExperimentLogger
 from ..config import BaseExperimentConfig
+from ...logger import logger
 from ...plotting_service.image import plot_rgb_image
 
 __all__ = [

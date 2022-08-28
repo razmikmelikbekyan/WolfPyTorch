@@ -10,9 +10,9 @@ import pandas as pd
 from clearml import Logger
 from matplotlib import pyplot as plt
 
-from wolf.utils.logger import logger
 from ..base_logger import BaseExperimentLogger
 from ..base_visualizer import BaseExperimentsResultVisualizer
+from ....logger import logger
 from ....plotting_service.classification import plot_classification_report, plot_confusion_matrix
 from ....plotting_service.image import plot_rgb_image
 from ....plotting_service.tabular import plot_tabular_data

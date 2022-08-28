@@ -7,9 +7,9 @@ import numpy as np
 import pandas as pd
 from clearml import Logger
 
-from wolf.utils.logger import logger
 from ..base_logger import BaseExperimentLogger
 from ..tile_level.regression import TLRegressionExperimentVisualizer
+from ....logger import logger
 from ....plotting_service.heatmap import plot_2_heatmaps
 from ....plotting_service.image import plot_rgb_image
 

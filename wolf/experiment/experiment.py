@@ -8,11 +8,11 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from wolf.utils.logger import logger
 from .config import BaseExperimentConfig
 from .experiment_logging import BaseExperimentLogger
 from .parser import BaseExperimentConfigParser
 from ..epoch import SingleBranchTrainEpoch, SingleBranchValidationEpoch
+from ..logger import logger
 
 __all__ = ['BaseExperiment', 'run_experiment']
 
