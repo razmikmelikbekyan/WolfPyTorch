@@ -5,7 +5,7 @@ import torch.nn as nn
 from segmentation_models_pytorch.base import SegmentationHead
 
 from .base import PixelLevelSMPModel
-from ....helpers.mixture_density.commons import join_mdn_output, split_mdn_output
+from ...helpers.mixture_density.commons import join_mdn_output, split_mdn_output
 
 
 class PLMDNHeadForSMP(nn.Module):

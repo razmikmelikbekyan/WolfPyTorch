@@ -6,7 +6,7 @@ import torch.nn as nn
 from segmentation_models_pytorch.base.model import SegmentationModel
 
 from .mdn_heads import PLMDNHeadForSMP, MDNBottleneckHeadForSMP
-from .wrapper import split_mdn_output, PLMDNWrapper, BottleneckMDNWrapper
+from .base import split_mdn_output, PLMDNWrapper, BottleneckMDNWrapper
 
 
 class PLMDNWrapperForSMP(PLMDNWrapper):
