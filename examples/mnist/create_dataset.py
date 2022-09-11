@@ -26,6 +26,7 @@ def parse_args():
     parser.add_argument(
         "--valid_size",
         required=True,
+        type=float,
         help="The percentage of the train data needs to be treated as validation data."
     )
     return parser.parse_args()
