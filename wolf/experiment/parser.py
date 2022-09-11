@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader, RandomSampler
 from .config import BaseExperimentConfig
 from .early_stopping import EarlyStopping
 from .experiment_logging import BaseExperimentLogger, get_experiment_logger
-from ..dataset import BaseDataset
+from ..dataset import WolfDataset
 from ..epoch import SingleBranchTrainEpoch, SingleBranchValidationEpoch, get_epochs
 from ..losses import get_loss, Loss
 from ..metrics import BaseEvaluator, get_evaluator
@@ -61,18 +61,20 @@ class BaseExperimentConfigParser:
             n_debug_samples = self.config.experiment.kwargs.batch_size
         return n_debug_samples
 
-    def get_datasets(self) -> Tuple[BaseDataset, BaseDataset]:
+    def get_datasets(self) -> Tuple[WolfDataset, WolfDataset]:
         """Returns the train and the valid dataset objects."""
-        return BaseDataset(**self.config.train_data.kwargs), BaseDataset(**self.config.valid_data.kwargs),
+        return WolfDataset(**self.config.train_data.kwargs), WolfDataset(**self.config.valid_data.kwargs),
 
-    def get_data_loaders(self) -> Tuple[BaseDataset, BaseDataset, DataLoader, DataLoader]:
+    def get_data_loaders(self) -> Tuple[WolfDataset, WolfDataset, DataLoader, DataLoader]:
         """Returns the train and valid data loaders of experiment."""
         train_dataset, valid_dataset = self.get_datasets()
-        if train_dataset.steps_per_epoch:
+
+        train_steps_per_epoch = self.config.experiment.kwargs.get('train_steps_per_epoch', None)
+        if train_steps_per_epoch:
             train_sampler = RandomSampler(
                 train_dataset,
                 replacement=True,
-                num_samples=train_dataset.steps_per_epoch * self.config.experiment.kwargs.batch_size
+                num_samples=train_steps_per_epoch * self.config.experiment.kwargs.batch_size
             )
         else:
             train_sampler = None
@@ -87,11 +89,12 @@ class BaseExperimentConfigParser:
             sampler=train_sampler
         )
 
-        if valid_dataset.steps_per_epoch:
+        valid_steps_per_epoch = self.config.experiment.kwargs.get('valid_steps_per_epoch', None)
+        if valid_steps_per_epoch:
             valid_sampler = RandomSampler(
                 valid_dataset,
                 replacement=True,
-                num_samples=valid_dataset.steps_per_epoch * self.config.experiment.kwargs.batch_size
+                num_samples=valid_steps_per_epoch * self.config.experiment.kwargs.batch_size
             )
         else:
             valid_sampler = None

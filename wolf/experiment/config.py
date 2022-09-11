@@ -65,11 +65,9 @@ class BaseExperimentConfig:
         )),
         "train_data": frozenset((
             "input_file",
-            "to_use_bands",
         )),
         "valid_data": frozenset((
             "input_file",
-            "to_use_bands",
         )),
         "model": frozenset((
         )),
@@ -302,15 +300,16 @@ class BaseExperimentConfig:
         """Returns the hyper-parameters of the experiment to log."""
         return {
             "experiment_name": self.experiment.name,
-            "epochs": self.experiment.kwargs['epochs'],
-            "batch_size": self.experiment.kwargs['batch_size'],
             "high_level_architecture": self.experiment.kwargs['high_level_architecture'].name,
             "task": self.experiment.kwargs['task'].name,
+            "epochs": self.experiment.kwargs['epochs'],
+            "batch_size": self.experiment.kwargs['batch_size'],
+            "train_steps_per_epoch": self.experiment.kwargs.get('train_steps_per_epoch', None),
+            "valid_steps_per_epoch": self.experiment.kwargs.get('valid_steps_per_epoch', None),
             "early_stopping_patience": self.experiment.kwargs.get("early_stopping", {}).get("patience", None),
-            "bands": self.train_data.kwargs.get("to_use_bands", None),
             "model": self.model.name,
+            "loss": self.loss.name,
             "optimizer": self.optimizer.name,
             "lr": self.optimizer.kwargs.get("lr", None),
             "scheduler": self.optimizer.get("lr_scheduler", None),
-            "loss": self.loss.name
         }

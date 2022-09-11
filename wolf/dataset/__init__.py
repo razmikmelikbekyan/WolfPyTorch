@@ -1,2 +1,2 @@
 from .augmentations import AUGMENTATIONS
-from .dataset import BaseDataset
+from .dataset import WolfDataset

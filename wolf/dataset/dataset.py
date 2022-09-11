@@ -12,7 +12,7 @@ from .augmentations import initialize_augmentations
 from ..logger import logger
 
 
-class BaseDataset(Dataset, ABC):
+class WolfDataset(Dataset, ABC):
     """Base class for all datasets which are using images as an input."""
 
     def __init__(self,
@@ -36,7 +36,6 @@ class BaseDataset(Dataset, ABC):
                        {"method": "mean_std", "kwargs": {"means_stds": {"RED": (0.5, 0.1)}}
             sample_size: the number of samples to select, if not given will select all the samples
             random_seed: random seed
-            steps_per_epoch: the number of steps to perform per epoch, if not given will use all steps
         """
         self._df = self.read_input_file(input_file).reset_index(drop=True)
         logger.info(f"Initial Data contains contains N={len(self._df)} samples.")

@@ -23,7 +23,7 @@ from torch.optim.optimizer import Optimizer
 from tqdm import tqdm
 
 from ..config import BaseExperimentConfig
-from ...dataset import BaseDataset
+from ...dataset import WolfDataset
 from ...logger import logger
 from ...losses import Loss
 from ...plotting_service.classification import plot_confusion_matrix
@@ -359,7 +359,7 @@ class BaseExperimentLogger:
         logger.debug(f"Training checkpoint is saved in {self.model_path} file.")
         logger.debug(f"Model weights are saved in {self.model_weights_path} file.")
 
-    def register_dataset(self, dataset: BaseDataset, mode: str):
+    def register_dataset(self, dataset: WolfDataset, mode: str):
         """Registers dataset DataFrame."""
         if mode == 'train':
             saving_path = str(self.train_dataset_path)
