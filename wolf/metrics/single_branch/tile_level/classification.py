@@ -6,7 +6,7 @@ import torch
 import torch.nn.functional as F  # noqa
 from torchmetrics.functional import auroc, accuracy, confusion_matrix
 
-from ..base import BaseEvaluator
+from ...base import BaseEvaluator
 
 
 class BaseClassificationEvaluator(BaseEvaluator):

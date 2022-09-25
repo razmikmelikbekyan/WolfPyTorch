@@ -1,8 +1,8 @@
 from typing import Any
 
-from .base import BaseEvaluator
 from .pixel_level import PIXEL_LEVEL_EVALUATORS
 from .tile_level import TILE_LEVEL_EVALUATORS
+from ..base import BaseEvaluator
 from ...constants import TaskTypes
 
 

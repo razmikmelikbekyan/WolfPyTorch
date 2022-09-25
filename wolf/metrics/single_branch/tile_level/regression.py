@@ -5,7 +5,7 @@ import torch
 from torchmetrics.functional import mean_absolute_error, mean_squared_error, r2_score
 from torchmetrics.functional.regression.mape import _mean_absolute_percentage_error_update
 
-from ..base import BaseEvaluator
+from ...base import BaseEvaluator
 
 
 class BaseRegressionEvaluator(BaseEvaluator):

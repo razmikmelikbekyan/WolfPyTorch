@@ -1,7 +1,8 @@
 from typing import Dict
 
 import torch
-from intelinair_ml.evaluators import BaseEvaluator
+
+from ..base import BaseEvaluator
 
 
 class MultiBranchEvaluator(BaseEvaluator):

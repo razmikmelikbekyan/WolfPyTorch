@@ -1,12 +1,12 @@
 """Package contains TILE LEVEL evaluators for various task types."""
+from .classification import TLClassificationEvaluator
+from .regression import TLRegressionEvaluator
 from ....constants import TaskTypes
-from intelinair_ml.evaluators.regression import RegressionEvaluator
-from intelinair_ml.evaluators.classification import ClassificationEvaluator
 
 TILE_LEVEL_EVALUATORS = {
-    TaskTypes.TL_BINARY_CLASSIFICATION: ClassificationEvaluator,
-    TaskTypes.TL_MULTI_CLASSIFICATION: ClassificationEvaluator,
-    TaskTypes.TL_REGRESSION: RegressionEvaluator,
-    TaskTypes.TL_QUANTILE_REGRESSION: RegressionEvaluator,
-    TaskTypes.TL_MDN_REGRESSION: RegressionEvaluator
+    TaskTypes.TL_BINARY_CLASSIFICATION: TLClassificationEvaluator,
+    TaskTypes.TL_MULTI_CLASSIFICATION: TLClassificationEvaluator,
+    TaskTypes.TL_REGRESSION: TLRegressionEvaluator,
+    TaskTypes.TL_QUANTILE_REGRESSION: TLRegressionEvaluator,
+    TaskTypes.TL_MDN_REGRESSION: TLRegressionEvaluator
 }
