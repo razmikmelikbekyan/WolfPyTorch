@@ -89,6 +89,12 @@ class WolfDataset(Dataset, ABC):
     def __len__(self) -> int:
         return len(self._df)
 
+    def __getitem__(self, item: int) -> Dict[str, torch.Tensor]:
+        """Override this method to apply augmentation of your dataset."""
+        raise NotImplementedError
+
+    # helper methods
+
     @staticmethod
     def dict_to_tensor(sample: Dict[str, Union[np.ndarray, Any]]) -> Dict[str, Union[torch.Tensor, float]]:
         """Converts dict of items to dict of tensors."""

@@ -1,6 +1,6 @@
 """This package SINGLE BRANCH architectures for PIXEL LEVEL tasks"""
 
-from .base import PixelLevelSMPModel
+from .smp import PixelLevelSMPModel
 from .mdn import PixelLevelMDNSMPModel
 from ....constants import TaskTypes
 
