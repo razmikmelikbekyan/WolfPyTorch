@@ -1,0 +1,103 @@
+{
+  "experiment": {
+    "name": "Resnet50-512-RGBN",
+    "kwargs": {
+      "high_level_architecture": "SINGLE_BRANCH",
+      "task": "TL_CLASSIFICATION",
+      "epochs": 10,
+      "device": "cpu",
+      "device_ids": [
+        0
+      ],
+      "batch_size": 4,
+      "num_workers": 4,
+      "verbose_epochs": 1,
+      "save_path": "tmp/mnist/experiments",
+      "early_stopping": {
+        "patience": 10,
+        "direction": "min"
+      },
+      "selection_metric": {
+        "name": "BCELoss",
+        "direction": "min"
+      }
+    }
+  },
+  "train_data": {
+    "name": "MNISTDataset",
+    "kwargs": {
+      "input_file": "tmp/mnist/train/train_samples.CSV",
+      "float32_factor": 255,
+      "normalize": null,
+      "sample_size": 100,
+      "steps_per_epoch": null,
+      "process_initial_df": true
+    }
+  },
+  "valid_data": {
+    "name": "MNISTDataset",
+    "kwargs": {
+      "input_file": "tmp/mnist/valid/valid_samples.CSV",
+      "float32_factor": 255,
+      "normalize": null,
+      "sample_size": 2000,
+      "steps_per_epoch": null,
+    }
+  },
+  "model": {
+    "name": "TileLevelModel",
+    "kwargs": {
+      "architecture": "resnet50",
+      "in_channels": 1,
+      "out_channels": 10,
+      "dropout_rate": 0.3,
+      "pretrained": true,
+      "freeze_feature_extractor": false
+    }
+  },
+  "optimizer": {
+    "name": "Adam",
+    "kwargs": {
+      "lr": 1e-4,
+      "weight_decay": 1e-5
+    },
+    "lr_scheduler": {
+      "name": "MultiStepLR",
+      "kwargs": {
+        "milestones": [3, 8],
+        "gamma": 0.1
+      }
+    }
+  },
+  "loss": {
+    "name": "BCELoss"
+  },
+  "evaluator": {
+    "name": "classification",
+    "kwargs": {
+      "epsilon": 1e-5,
+      "metrics": [
+        [
+          "confusion_matrix",
+          {}
+        ],
+        [
+          "accuracy",
+          {}
+        ],
+        [
+          "precision",
+          {"average_type": "weighted"}
+        ],
+        [
+          "recall",
+          {"average_type": "weighted"}
+        ],
+        [
+          "f1",
+          {"average_type": "weighted"}
+        ]
+      ]
+    }
+  }
+}
