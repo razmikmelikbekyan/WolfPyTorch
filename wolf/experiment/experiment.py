@@ -114,7 +114,7 @@ class BaseExperiment:
             logger.info(f"Model, Data, Loss and Metrics are loaded successfully. Starting training.")
         except Exception as e:
             logger.error(f"Training is interrupted due to error: {e}.", stack_info=True, exc_info=True)
-            self.logger.clean_up()
+            self.logger.clean_up(stopped_by_user=False)
         else:
 
             progress_bar = self._get_progress_bar()
@@ -146,12 +146,12 @@ class BaseExperiment:
 
                 except KeyboardInterrupt:
                     logger.info("Training is interrupted by user.")
-                    self.logger.clean_up()
+                    self.logger.clean_up(stopped_by_user=True)
                     break
 
                 except Exception as e:
                     logger.error(f"Training is interrupted due to error: {e}.", stack_info=True, exc_info=True)
-                    self.logger.clean_up()
+                    self.logger.clean_up(stopped_by_user=False)
                     break
 
             self.logger.finalize()

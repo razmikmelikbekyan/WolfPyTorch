@@ -125,7 +125,7 @@ class BaseExperimentLogger:
         """Returns the folder where the results are stored."""
         return self.saving_dir
 
-    def clean_up(self):
+    def clean_up(self, stopped_by_user: bool = False):
         """Removes logged data due to errors."""
         if not self.results_path.exists():
             shutil.rmtree(self.saving_dir)
@@ -133,7 +133,8 @@ class BaseExperimentLogger:
             if self.clearml_task is not None:
                 self.clearml_task.delete(raise_on_error=True)
         else:
-            logger.warning(f"Failed to remove experiment folder, since it contains results data.")
+            if not stopped_by_user:
+                logger.warning(f"Failed to remove experiment folder, since it contains results data.")
 
     @property
     def cleaned_up(self) -> bool:
@@ -142,12 +143,12 @@ class BaseExperimentLogger:
 
     @property
     def run_config_path(self) -> Path:
-        """Returns the run configfile path."""
+        """Returns the run config file path."""
         return self.saving_dir.joinpath(self.RUN_CONFIG_FILENAME)
 
     @property
     def inference_config_path(self) -> Path:
-        """Returns the inference configfile path."""
+        """Returns the inference config file path."""
         return self.saving_dir.joinpath(self.INFERENCE_CONFIG_FILENAME)
 
     @property
@@ -240,7 +241,7 @@ class BaseExperimentLogger:
 
         print()
         for k, v in config.all_configs.items():
-            logger.info(f'{k} config: {v}')
+            print(f'{k} config: {v}')
             print()
 
         logger.debug(f"Experiment run config is saved in {self.run_config_path} file.")
