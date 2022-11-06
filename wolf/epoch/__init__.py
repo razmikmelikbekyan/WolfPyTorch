@@ -9,7 +9,7 @@ from ..enums import TaskTypes, HighLevelArchitectureTypes
 
 def get_epochs(high_level_architecture: HighLevelArchitectureTypes, task: TaskTypes,
                ) -> Tuple[Type[SingleBranchTrainEpoch], Type[SingleBranchValidationEpoch]]:
-    """Returns the Epoch classes based on given task."""
+    """Returns the train and validation Epoch classes based on given task."""
     if high_level_architecture == HighLevelArchitectureTypes.SINGLE_BRANCH:
         epochs = get_single_branch_epoch(task)
     else:

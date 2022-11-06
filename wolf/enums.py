@@ -14,13 +14,13 @@ class HighLevelArchitectureTypes(Enum):
 
 
 class TaskTypes(Enum):
-    """Defines a possible task types the model single branch may perform."""
+    """Defines a possible task types."""
 
     # --------------------------- the main tasks ---------------------------
 
     # outputs a single number, ordinary regression
     # output size: [B, 1]
-    TL_REGRESSION = "TL_REGRESSION", "TILE_LEVEL_REGRESSION"
+    IL_REGRESSION = "IL_REGRESSION", "IMAGE_LEVEL_REGRESSION"
 
     # outputs a single number for each pixel - regression segmentation
     # output size: [B, 1, H, W]
@@ -28,7 +28,7 @@ class TaskTypes(Enum):
 
     # outputs a single number - the predicted class logits or positive class probability (after sigmoid)
     # output size: [B, 1]
-    TL_BINARY_CLASSIFICATION = "TL_BINARY_CLASSIFICATION", "TILE_LEVEL_BINARY_CLASSIFICATION"
+    IL_BINARY_CLASSIFICATION = "IL_BINARY_CLASSIFICATION", "IMAGE_LEVEL_BINARY_CLASSIFICATION"
 
     # outputs a single number for each pixel - the predicted class logits or positive class probability (after sigmoid)
     # this is the same as binary segmentation
@@ -37,7 +37,7 @@ class TaskTypes(Enum):
 
     # outputs a vector - the predicted classes logits or classes probabilities (after softmax)
     # output size: [B, N-Classes]
-    TL_MULTI_CLASSIFICATION = "TL_MULTI_CLASSIFICATION", "TILE_LEVEL_MULTI_CLASSIFICATION"
+    IL_MULTI_CLASSIFICATION = "IL_MULTI_CLASSIFICATION", "IMAGE_LEVEL_MULTI_CLASSIFICATION"
 
     # outputs a vector for each pixel - the predicted classes logits or classes probabilities (after softmax)
     # this is the same as multiclass segmentation
@@ -48,7 +48,7 @@ class TaskTypes(Enum):
 
     # outputs quantiles, ordinary quantile regression
     # output size: [B, N-Quantiles]
-    TL_QUANTILE_REGRESSION = "TL_QUANTILE_REGRESSION", "TILE_LEVEL_QUANTILE_REGRESSION"
+    IL_QUANTILE_REGRESSION = "IL_QUANTILE_REGRESSION", "IMAGE_LEVEL_QUANTILE_REGRESSION"
 
     # outputs quantiles fro each pixel, ordinary quantile regression for each pixel
     # output size: [B, N-Quantiles, H, W]
@@ -56,7 +56,7 @@ class TaskTypes(Enum):
 
     # outputs pi, mean and sigma, ordinary mixture density regression
     # output size: [B, N-MixtureComponents] (for pi, mean and sigma, if combine will be [B, 3 * N-MixtureComponents])
-    TL_MDN_REGRESSION = "TL_MDN_REGRESSION", "TILE_LEVEL_MDN_REGRESSION"
+    IL_MDN_REGRESSION = "IL_MDN_REGRESSION", "IMAGELEVEL_MDN_REGRESSION"
 
     # outputs pi, mean and sigma for each pixel, ordinary mixture density regression for each pixel
     # output size: [B, N-MixtureComponents, H, W]
@@ -68,8 +68,8 @@ class TaskTypes(Enum):
     MULTI_TASK = "MULTI_TASK"
 
     @classmethod
-    def get_tile_level_tasks(cls):
-        return frozenset([x for x in cls if x.name.startswith('TL_')])
+    def get_image_level_tasks(cls):
+        return frozenset([x for x in cls if x.name.startswith('IL_')])
 
     @classmethod
     def get_pixel_level_tasks(cls):
