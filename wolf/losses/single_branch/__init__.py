@@ -5,7 +5,7 @@ import torch
 from .base import Loss
 from .pixel_level import PIXEL_LEVEL_LOSSES
 from .tile_level import TILE_LEVEL_LOSSES
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 def get_single_branch_loss(task: TaskTypes, loss_name: str, **loss_kwargs: Dict) -> Loss:

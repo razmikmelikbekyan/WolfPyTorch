@@ -2,7 +2,7 @@
 from .base import TileLevelModel
 from .mdn import TileLevelMDNModel
 
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 TILE_LEVEL_MODELS = {
     "TileLevelModel": {

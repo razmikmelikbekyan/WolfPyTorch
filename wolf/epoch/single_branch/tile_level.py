@@ -2,7 +2,7 @@
 from .base import SingleBranchTrainEpoch, SingleBranchValidationEpoch
 from .mixin import SimpleSingleChannelEpochMixin
 
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 class TLRegressionTrainEpoch(SimpleSingleChannelEpochMixin, SingleBranchTrainEpoch):

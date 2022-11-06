@@ -1,7 +1,7 @@
 """Package contains TILE LEVEL evaluators for various task types."""
 from .classification import TLClassificationEvaluator
 from .regression import TLRegressionEvaluator
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 TILE_LEVEL_EVALUATORS = {
     TaskTypes.TL_BINARY_CLASSIFICATION: TLClassificationEvaluator,

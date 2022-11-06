@@ -40,7 +40,10 @@ class BaseClassificationEvaluator(BaseEvaluator):
             threshold: the threshold to use in case of binary classification
         """
         super(BaseClassificationEvaluator, self).__init__(metrics=metrics)
-        assert prediction_type in self.PredictionTypes, prediction_type
+        if prediction_type not in self.PredictionTypes:
+            raise ValueError(
+                f"Given prediction type={prediction_type} is wrong, please select from {list(self.PredictionTypes)}"
+            )
         assert len(classes) >= 2 or len(classes) != n_classes, classes
 
         self._n_classes = n_classes

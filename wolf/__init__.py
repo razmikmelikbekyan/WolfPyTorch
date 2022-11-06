@@ -1,6 +1,6 @@
 """This package represents the main package for training and evaluation of deep learning models."""
 
-from .constants import *
+from .enums import *
 from .dataset import *
 from .epoch import *
 from .experiment import *

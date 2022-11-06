@@ -2,7 +2,7 @@
 from .classifcation import PLClassificationEvaluator
 from .regression import PLRegressionEvaluator
 
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 PIXEL_LEVEL_EVALUATORS = {
     TaskTypes.PL_REGRESSION: PLRegressionEvaluator,

@@ -3,7 +3,7 @@ from typing import Any
 from .multi_branch import get_multi_branch_loss, MultiBranchLoss, MULTI_BRANCH_LOSS_CONFIG_KEYS
 from .single_branch import get_single_branch_loss, Loss
 from .temporal import get_temporal_loss, TemporalLoss
-from ..constants import TaskTypes, HighLevelArchitectureTypes
+from ..enums import TaskTypes, HighLevelArchitectureTypes
 
 
 def get_loss(high_level_architecture: HighLevelArchitectureTypes,

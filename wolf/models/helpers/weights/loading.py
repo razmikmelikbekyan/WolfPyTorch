@@ -5,7 +5,7 @@ from urllib.request import urlretrieve
 import torch
 import torch.nn as nn
 
-from logger import logger
+from ....logger import logger
 
 
 def load_model_from_path(model_instance: nn.Module, model_path: str or None) -> torch.nn.Module:

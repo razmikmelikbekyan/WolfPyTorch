@@ -5,7 +5,7 @@ from typing import Any, Dict
 import torch
 from easydict import EasyDict
 
-from ..constants import TaskTypes, HighLevelArchitectureTypes
+from ..enums import TaskTypes, HighLevelArchitectureTypes
 from ..metrics import MULTI_BRANCH_EVALUATOR_CONFIG_KEYS
 
 __all__ = ['BaseExperimentConfig']

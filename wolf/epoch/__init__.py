@@ -4,7 +4,7 @@ from .multi_branch import MultiBranchEpochMixin, MultiBranchTrainEpoch, MultiBra
 from .single_branch import SingleBranchEpochMixin, SingleBranchTrainEpoch, SingleBranchValidationEpoch
 from .single_branch import get_single_branch_epoch
 from .temporal import TemporalEpochMixin
-from ..constants import TaskTypes, HighLevelArchitectureTypes
+from ..enums import TaskTypes, HighLevelArchitectureTypes
 
 
 def get_epochs(high_level_architecture: HighLevelArchitectureTypes, task: TaskTypes,

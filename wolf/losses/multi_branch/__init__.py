@@ -2,7 +2,7 @@ from typing import List, Dict
 
 from .base import MultiBranchLoss
 from ..single_branch import get_single_branch_loss
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 MULTI_BRANCH_LOSS_CONFIG_KEYS = ('task', 'branch', 'branch_weight', 'loss_name', 'loss_kwargs')
 

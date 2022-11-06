@@ -1,7 +1,7 @@
 """Package contains TILE LEVEL experiments loggers and visualizers for various task types."""
 from .classification import *
 from .regression import *
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 TILE_LEVEL_LOGGERS = {
     TaskTypes.TL_REGRESSION: TLRegressionExperimentLogger,

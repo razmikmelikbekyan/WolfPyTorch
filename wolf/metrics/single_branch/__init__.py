@@ -3,7 +3,7 @@ from typing import Any
 from .pixel_level import PIXEL_LEVEL_EVALUATORS
 from .tile_level import TILE_LEVEL_EVALUATORS
 from ..base import BaseEvaluator
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 def get_single_branch_evaluator(task: TaskTypes, **evaluator_kwargs: Any) -> BaseEvaluator:

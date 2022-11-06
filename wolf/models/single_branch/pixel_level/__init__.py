@@ -2,7 +2,7 @@
 
 from .smp import PixelLevelSMPModel
 from .mdn import PixelLevelMDNSMPModel
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 PIXEL_LEVEL_MODELS = {
     "PixelLevelSMPModel": {

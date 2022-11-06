@@ -2,7 +2,7 @@ from typing import List, Dict
 
 from .base import MultiBranchEvaluator
 from ..single_branch import get_single_branch_evaluator
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 MULTI_BRANCH_EVALUATOR_CONFIG_KEYS = ('task', 'branch', 'evaluator_kwargs')
 

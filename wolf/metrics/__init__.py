@@ -4,7 +4,7 @@ from .base import BaseEvaluator
 from .meter import AverageValueMeter
 from .multi_branch import get_multi_branch_evaluator, MultiBranchEvaluator, MULTI_BRANCH_EVALUATOR_CONFIG_KEYS
 from .single_branch import get_single_branch_evaluator, BaseEvaluator
-from ..constants import TaskTypes, HighLevelArchitectureTypes
+from ..enums import TaskTypes, HighLevelArchitectureTypes
 
 
 def get_evaluator(high_level_architecture: HighLevelArchitectureTypes,

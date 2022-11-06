@@ -2,7 +2,7 @@
 from .classification import *
 from .regression import *
 
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 PIXEL_LEVEL_LOSSES = {
     TaskTypes.PL_BINARY_CLASSIFICATION: {

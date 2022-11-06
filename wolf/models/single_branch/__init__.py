@@ -5,7 +5,7 @@ import torch.nn as nn
 
 from .pixel_level import PIXEL_LEVEL_MODELS
 from .tile_level import TILE_LEVEL_MODELS
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 def get_single_branch_model(task: TaskTypes, model_name: str, **model_kwargs: Any) -> nn.Module:

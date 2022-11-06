@@ -4,7 +4,7 @@ import torch
 
 from .base import TemporalLoss
 from .tile_level import TILE_LEVEL_LOSSES
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 def get_temporal_loss(task: TaskTypes, loss_name: str, **loss_kwargs: Dict) -> TemporalLoss:

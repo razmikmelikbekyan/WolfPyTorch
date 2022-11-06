@@ -1,7 +1,7 @@
 """Package contains PIXEL LEVEL epochs for various task types."""
 from .base import SingleBranchTrainEpoch, SingleBranchValidationEpoch
 from .mixin import SimpleSingleChannelEpochMixin, PLMultiClassificationEpochMixin
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 class PLRegressionTrainEpoch(SimpleSingleChannelEpochMixin, SingleBranchTrainEpoch):

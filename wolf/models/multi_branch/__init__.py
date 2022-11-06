@@ -4,7 +4,7 @@ from typing import Any
 import torch.nn as nn
 
 from .smp import MultiBranchPLSimpleTLBottleneckMDNSMPModel
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 MULTI_BRANCH_MODELS = {
     "MultiBranchPLSimpleTLBottleneckMDNSMPModel": {

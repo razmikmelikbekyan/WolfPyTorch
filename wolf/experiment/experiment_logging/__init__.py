@@ -4,7 +4,7 @@ from .base_logger import BaseExperimentLogger
 from .base_visualizer import BaseExperimentsResultVisualizer
 from .pixel_level import PIXEL_LEVEL_LOGGERS, PIXEL_LEVEL_VISUALIZERS
 from .tile_level import TILE_LEVEL_LOGGERS, TILE_LEVEL_VISUALIZERS
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 def get_experiment_logger(task: TaskTypes) -> Type[BaseExperimentLogger]:

@@ -6,7 +6,7 @@ from .helpers.weights.device import model_to_device
 from .helpers.weights.loading import load_model_from_path
 from .multi_branch import get_multi_branch_model
 from .single_branch import get_single_branch_model
-from ..constants import HighLevelArchitectureTypes, TaskTypes
+from ..enums import HighLevelArchitectureTypes, TaskTypes
 
 
 def get_model(high_level_architecture: HighLevelArchitectureTypes,

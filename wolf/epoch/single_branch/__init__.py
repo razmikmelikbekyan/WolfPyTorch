@@ -3,7 +3,7 @@
 from .base import SingleBranchEpochMixin, SingleBranchTrainEpoch, SingleBranchValidationEpoch
 from .pixel_level import PIXEL_LEVEL_EPOCHS
 from .tile_level import TILE_LEVEL_EPOCHS
-from ...constants import TaskTypes
+from ...enums import TaskTypes
 
 
 def get_single_branch_epoch(task: TaskTypes) -> (SingleBranchTrainEpoch, SingleBranchValidationEpoch):

@@ -2,7 +2,7 @@
 from .classification import *
 from .regression import *
 
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 TILE_LEVEL_LOSSES = {
     TaskTypes.TL_BINARY_CLASSIFICATION: {

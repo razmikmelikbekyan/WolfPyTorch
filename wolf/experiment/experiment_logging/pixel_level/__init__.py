@@ -1,7 +1,7 @@
 """Package contains PIXEL LEVEL experiments loggers and visualizers for various task types."""
 from .classification import *
 from .regression import *
-from ....constants import TaskTypes
+from ....enums import TaskTypes
 
 PIXEL_LEVEL_LOGGERS = {
     TaskTypes.PL_REGRESSION: PLRegressionExperimentLogger,
