@@ -297,8 +297,8 @@ class BaseClassificationEvaluator(BaseEvaluator):
             self.y_true.append(y_true)
 
 
-class TLClassificationEvaluator(BaseClassificationEvaluator):
-    """Special class for evaluation TL Classification models."""
+class ILClassificationEvaluator(BaseClassificationEvaluator):
+    """Special class for evaluation IL Classification models."""
 
     ConfusionMatrixMetrics = frozenset([
         'accuracy',

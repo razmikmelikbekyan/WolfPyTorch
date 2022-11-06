@@ -119,7 +119,7 @@ class BaseRegressionEvaluator(BaseEvaluator):
         return self.to_python_float(deepcopy(self._state))
 
 
-class TLRegressionEvaluator(BaseRegressionEvaluator):
+class ILRegressionEvaluator(BaseRegressionEvaluator):
     """Special class for evaluation tile level Regression models that give the output a single number."""
 
     MetricsPool = frozenset([

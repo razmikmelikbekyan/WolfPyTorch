@@ -1,6 +1,6 @@
 import torch
 
-from ..tile_level.classification import BaseClassificationEvaluator
+from ..image_level.classification import BaseClassificationEvaluator
 
 
 class PLClassificationEvaluator(BaseClassificationEvaluator):

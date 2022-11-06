@@ -1,7 +1,7 @@
 from typing import Any
 
 from .pixel_level import PIXEL_LEVEL_EVALUATORS
-from .tile_level import TILE_LEVEL_EVALUATORS
+from .image_level import IMAGE_LEVEL_EVALUATORS
 from ..base import BaseEvaluator
 from ...enums import TaskTypes
 
@@ -9,8 +9,8 @@ from ...enums import TaskTypes
 def get_single_branch_evaluator(task: TaskTypes, **evaluator_kwargs: Any) -> BaseEvaluator:
     """Returns the evaluator class based on its task."""
 
-    if task in TaskTypes.get_tile_level_tasks():
-        evaluator_klass = TILE_LEVEL_EVALUATORS[task]
+    if task in TaskTypes.get_image_level_tasks():
+        evaluator_klass = IMAGE_LEVEL_EVALUATORS[task]
     elif task in TaskTypes.get_pixel_level_tasks():
         evaluator_klass = PIXEL_LEVEL_EVALUATORS[task]
     else:

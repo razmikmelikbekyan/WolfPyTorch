@@ -1,6 +1,6 @@
 import torch
 
-from ..tile_level.regression import BaseRegressionEvaluator
+from ..image_level.regression import BaseRegressionEvaluator
 
 
 class PLRegressionEvaluator(BaseRegressionEvaluator):

@@ -1,12 +1,12 @@
-"""Package contains TILE LEVEL evaluators for various task types."""
-from .classification import TLClassificationEvaluator
-from .regression import TLRegressionEvaluator
+"""Package contains IMAGE LEVEL evaluators for various task types."""
+from .classification import ILClassificationEvaluator
+from .regression import ILRegressionEvaluator
 from ....enums import TaskTypes
 
-TILE_LEVEL_EVALUATORS = {
-    TaskTypes.IL_BINARY_CLASSIFICATION: TLClassificationEvaluator,
-    TaskTypes.IL_MULTI_CLASSIFICATION: TLClassificationEvaluator,
-    TaskTypes.IL_REGRESSION: TLRegressionEvaluator,
-    TaskTypes.IL_QUANTILE_REGRESSION: TLRegressionEvaluator,
-    TaskTypes.IL_MDN_REGRESSION: TLRegressionEvaluator
+IMAGE_LEVEL_EVALUATORS = {
+    TaskTypes.IL_BINARY_CLASSIFICATION: ILClassificationEvaluator,
+    TaskTypes.IL_MULTI_CLASSIFICATION: ILClassificationEvaluator,
+    TaskTypes.IL_REGRESSION: ILRegressionEvaluator,
+    TaskTypes.IL_QUANTILE_REGRESSION: ILRegressionEvaluator,
+    TaskTypes.IL_MDN_REGRESSION: ILRegressionEvaluator
 }
