@@ -4,7 +4,7 @@ from .classification import *
 from ....enums import TaskTypes
 
 TILE_LEVEL_LOSSES = {
-    TaskTypes.TL_MULTI_CLASSIFICATION: {
+    TaskTypes.IL_MULTI_CLASSIFICATION: {
         'TemporalCrossEntropyLoss': TemporalCrossEntropyLoss,
         'TemporalMultiClassFocalLoss': TemporalMultiClassFocalLoss,
     },

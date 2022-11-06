@@ -16,11 +16,11 @@ from ....logger import logger
 from ....plotting_service.image import plot_rgb_image
 
 __all__ = [
-    'TLRegressionExperimentLogger', 'TLRegressionExperimentVisualizer'
+    'ILRegressionExperimentLogger', 'ILRegressionExperimentVisualizer'
 ]
 
 
-class TLRegressionExperimentLogger(BaseExperimentLogger):
+class ILRegressionExperimentLogger(BaseExperimentLogger):
     """Class for storing and saving tile level regression experiments results."""
 
     FIG_SIZE = (10, 10)
@@ -75,10 +75,10 @@ class TLRegressionExperimentLogger(BaseExperimentLogger):
                 logger.warning(f'Plotting failed due to error: {e}', stack_info=True, exc_info=True)
 
 
-class TLRegressionExperimentVisualizer(BaseExperimentsResultVisualizer):
+class ILRegressionExperimentVisualizer(BaseExperimentsResultVisualizer):
     """Special class for view Regression Experiment results."""
 
-    _figsize = TLRegressionExperimentLogger.FIG_SIZE
+    _figsize = ILRegressionExperimentLogger.FIG_SIZE
 
     @staticmethod
     def style_table(df: pd.DataFrame, axis: int, precision: int = 0):

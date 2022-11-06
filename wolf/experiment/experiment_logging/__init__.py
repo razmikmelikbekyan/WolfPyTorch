@@ -3,14 +3,14 @@ from typing import Type
 from .base_logger import BaseExperimentLogger
 from .base_visualizer import BaseExperimentsResultVisualizer
 from .pixel_level import PIXEL_LEVEL_LOGGERS, PIXEL_LEVEL_VISUALIZERS
-from .tile_level import TILE_LEVEL_LOGGERS, TILE_LEVEL_VISUALIZERS
+from .image_level import IMAGE_LEVEL_LOGGERS, IMAGE_LEVEL_VISUALIZERS
 from ...enums import TaskTypes
 
 
 def get_experiment_logger(task: TaskTypes) -> Type[BaseExperimentLogger]:
     """Returns the experiment Logger for given task."""
-    if task in TaskTypes.get_tile_level_tasks():
-        loggers_pool = TILE_LEVEL_LOGGERS
+    if task in TaskTypes.get_image_level_tasks():
+        loggers_pool = IMAGE_LEVEL_LOGGERS
     elif task in TaskTypes.get_pixel_level_tasks():
         loggers_pool = PIXEL_LEVEL_LOGGERS
     else:
@@ -28,8 +28,8 @@ def get_experiment_logger(task: TaskTypes) -> Type[BaseExperimentLogger]:
 
 def get_experiment_visualizer(task: TaskTypes) -> Type[BaseExperimentsResultVisualizer]:
     """Returns the experiment Visualizer for given task."""
-    if task in TaskTypes.get_tile_level_tasks():
-        visualizers_pool = TILE_LEVEL_VISUALIZERS
+    if task in TaskTypes.get_image_level_tasks():
+        visualizers_pool = IMAGE_LEVEL_VISUALIZERS
     elif task in TaskTypes.get_pixel_level_tasks():
         visualizers_pool = PIXEL_LEVEL_VISUALIZERS
     else:

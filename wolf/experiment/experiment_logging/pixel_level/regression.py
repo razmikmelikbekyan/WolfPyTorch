@@ -8,7 +8,7 @@ import pandas as pd
 from clearml import Logger
 
 from ..base_logger import BaseExperimentLogger
-from ..tile_level.regression import TLRegressionExperimentVisualizer
+from ..image_level.regression import ILRegressionExperimentVisualizer
 from ....logger import logger
 from ....plotting_service.heatmap import plot_2_heatmaps
 from ....plotting_service.image import plot_rgb_image
@@ -104,7 +104,7 @@ class PLRegressionExperimentLogger(BaseExperimentLogger):
                 logger.warning(f'Plotting failed due to error: {e}', stack_info=True, exc_info=True)
 
 
-class PLRegressionExperimentVisualizer(TLRegressionExperimentVisualizer):
+class PLRegressionExperimentVisualizer(ILRegressionExperimentVisualizer):
     """Special class for view Regression Segmentation Experiment results."""
 
     _figsize = PLRegressionExperimentLogger.FIG_SIZE

@@ -18,11 +18,11 @@ from ....plotting_service.image import plot_rgb_image
 from ....plotting_service.tabular import plot_tabular_data
 
 __all__ = [
-    'TLClassificationExperimentLogger', 'TLClassificationEpochVisualizer'
+    'ILClassificationExperimentLogger', 'ILClassificationEpochVisualizer'
 ]
 
 
-class TLClassificationExperimentLogger(BaseExperimentLogger):
+class ILClassificationExperimentLogger(BaseExperimentLogger):
     """Class for storing and saving classification (binary and multiclass) experiments results."""
 
     FIG_SIZE = (10, 10)
@@ -80,10 +80,10 @@ class TLClassificationExperimentLogger(BaseExperimentLogger):
                 logger.warning(f'Plotting failed due to error: {e}', stack_info=True, exc_info=True)
 
 
-class TLClassificationEpochVisualizer(BaseExperimentsResultVisualizer):
+class ILClassificationEpochVisualizer(BaseExperimentsResultVisualizer):
     """Special class for view Classification Epoch results."""
 
-    _figsize = TLClassificationExperimentLogger.FIG_SIZE
+    _figsize = ILClassificationExperimentLogger.FIG_SIZE
 
     @classmethod
     def plot_single_epoch(cls,

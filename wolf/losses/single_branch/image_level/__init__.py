@@ -5,27 +5,27 @@ from .regression import *
 from ....enums import TaskTypes
 
 TILE_LEVEL_LOSSES = {
-    TaskTypes.TL_BINARY_CLASSIFICATION: {
+    TaskTypes.IL_BINARY_CLASSIFICATION: {
         'BCELoss': BCELoss,
         'BCEWithLogitsLoss': BCEWithLogitsLoss,
         'BinaryFocalLoss': BinaryFocalLoss
     },
-    TaskTypes.TL_MULTI_CLASSIFICATION: {
+    TaskTypes.IL_MULTI_CLASSIFICATION: {
         'CrossEntropyLoss': CrossEntropyLoss,
         'NLLLoss': NLLLoss,
         'LabelSmoothingLoss': LabelSmoothingLoss,
         'MultiClassFocalLoss': MultiClassFocalLoss,
     },
-    TaskTypes.TL_REGRESSION: {
+    TaskTypes.IL_REGRESSION: {
         'L1Loss': L1Loss,
         'SmoothL1Loss': SmoothL1Loss,
         'L2Loss': L2Loss,
         'HuberLoss': HuberLoss,
     },
-    TaskTypes.TL_QUANTILE_REGRESSION: {
+    TaskTypes.IL_QUANTILE_REGRESSION: {
         'PinBallLoss': PinBallLoss
     },
-    TaskTypes.TL_MDN_REGRESSION: {
+    TaskTypes.IL_MDN_REGRESSION: {
         'MDNLoss': MDNLoss
     }
 }

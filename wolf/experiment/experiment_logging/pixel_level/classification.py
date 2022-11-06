@@ -9,7 +9,7 @@ from clearml import Logger
 from matplotlib import pyplot as plt
 
 from ..base_logger import BaseExperimentLogger
-from ..tile_level.classification import TLClassificationEpochVisualizer
+from ..image_level.classification import ILClassificationEpochVisualizer
 from ....logger import logger
 from ....plotting_service.image import plot_multiple_images
 
@@ -87,7 +87,7 @@ class PLBinaryClassificationExperimentLogger(BaseExperimentLogger):
                 logger.warning(f'Plotting failed due to error: {e}', stack_info=True, exc_info=True)
 
 
-class PLBinaryClassificationExperimentVisualizer(TLClassificationEpochVisualizer):
+class PLBinaryClassificationExperimentVisualizer(ILClassificationEpochVisualizer):
     """Special class for view PL Binary Classification Experiment results."""
     _figsize = PLBinaryClassificationExperimentLogger.FIG_SIZE
 
