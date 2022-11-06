@@ -1,6 +1,7 @@
 import torch
 
-from ...single_branch.tile_level.classification import CrossEntropyLoss, MultiClassFocalLoss
+from ..base import TemporalLoss
+from ...single_branch.image_level.classification import CrossEntropyLoss, MultiClassFocalLoss
 
 __all__ = [
     'TemporalCrossEntropyLoss',
@@ -8,10 +9,8 @@ __all__ = [
 ]
 
 
-class TemporalCrossEntropyLoss(CrossEntropyLoss):
+class TemporalCrossEntropyLoss(CrossEntropyLoss, TemporalLoss):
     """The temporal version of the CrossEntropyLoss."""
-
-    IS_TEMPORAL = True
 
     def forward(self, y_pred: torch.Tensor, y_true: torch.Tensor) -> float:
         """
@@ -25,10 +24,8 @@ class TemporalCrossEntropyLoss(CrossEntropyLoss):
         return sum(super(TemporalCrossEntropyLoss, self).forward(y_pred[:, i], y_true[:, i]) for i in range(T))
 
 
-class TemporalMultiClassFocalLoss(MultiClassFocalLoss):
+class TemporalMultiClassFocalLoss(MultiClassFocalLoss, TemporalLoss):
     """The temporal version of the MultiClassFocalLoss"""
-
-    IS_TEMPORAL = True
 
     def forward(self, y_pred: torch.Tensor, y_true: torch.Tensor) -> float:
         """

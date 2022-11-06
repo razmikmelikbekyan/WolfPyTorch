@@ -119,7 +119,10 @@ class BCEDiceLogitsLoss(SumOfLosses):
 
 
 class CrossEntropyLoss(SoftCrossEntropyLoss, Loss):
-    """Drop-in replacement for torch.nn.CrossEntropyLoss with label_smoothing"""
+    """Drop-in replacement for torch.nn.CrossEntropyLoss with label_smoothing
+
+    Expects the target before softmax - aka raw logits.
+    """
     pass
 
 
@@ -160,7 +163,7 @@ class MultiClassFocalLoss(FocalLoss, Loss):
         Loss.__init__(self, name="MultiClassFocalLoss")
 
 
-class MultiClassTverskyLoss(DiceLoss, Loss):
+class MultiClassTverskyLoss(TverskyLoss, Loss):
     """
     Tversky loss implementation for multiple classes case.
 

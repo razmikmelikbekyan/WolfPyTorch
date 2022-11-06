@@ -1,10 +1,10 @@
-"""Package contains TILE LEVEL losses for various task types."""
+"""Package contains IMAGE LEVEL losses for various task types."""
 from .classification import *
 from .regression import *
 
 from ....enums import TaskTypes
 
-TILE_LEVEL_LOSSES = {
+IMAGE_LEVEL_LOSSES = {
     TaskTypes.IL_BINARY_CLASSIFICATION: {
         'BCELoss': BCELoss,
         'BCEWithLogitsLoss': BCEWithLogitsLoss,

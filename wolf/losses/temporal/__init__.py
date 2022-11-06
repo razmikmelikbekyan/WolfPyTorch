@@ -3,7 +3,7 @@ from typing import Dict
 import torch
 
 from .base import TemporalLoss
-from .tile_level import TILE_LEVEL_LOSSES
+from .image_level import TEMPORAL_IMAGE_LEVEL_LOSSES
 from ...enums import TaskTypes
 
 
@@ -14,10 +14,10 @@ def get_temporal_loss(task: TaskTypes, loss_name: str, **loss_kwargs: Dict) -> T
         for k, v in loss_kwargs.items()
     }
 
-    if task in TaskTypes.get_tile_level_tasks():
-        loss_pool = TILE_LEVEL_LOSSES[task]
+    if task in TaskTypes.get_image_level_tasks():
+        loss_pool = TEMPORAL_IMAGE_LEVEL_LOSSES[task]
     else:
-        raise NotImplementedError(f"For task={task} there are no implemented Losses.")
+        raise NotImplementedError(f"For task={task} there are no implemented Temporal Losses.")
 
     try:
         return loss_pool[loss_name](**loss_kwargs)

@@ -47,23 +47,6 @@ class CrossEntropyLoss(nn.CrossEntropyLoss, Loss):
     pass
 
 
-class TemporalCrossEntropyLoss(CrossEntropyLoss):
-    """The temporal version of the CrossEntropyLoss."""
-
-    IS_TEMPORAL = True
-
-    def forward(self, y_pred: torch.Tensor, y_true: torch.Tensor) -> float:
-        """
-        Args:
-            y_pred: net output with shape [B x T x NCLasses]
-            y_true: ground truth with shape [B x T]
-
-        Returns: the scalar loss value averaged over the batch
-        """
-        B, T, N = y_pred.shape
-        return sum(super(TemporalCrossEntropyLoss, self).forward(y_pred[:, i], y_true[:, i]) for i in range(T))
-
-
 class MultiClassFocalLoss(nn.CrossEntropyLoss, Loss):
     """
       This is a implementation of Focal Loss with smooth label cross entropy supported which is proposed in
@@ -89,23 +72,6 @@ class MultiClassFocalLoss(nn.CrossEntropyLoss, Loss):
         """
         logpt = F.cross_entropy(y_pred, y_true, reduction='none', weight=self.weight)
         return (((1 - torch.exp(-logpt)) ** self.gamma) * logpt).mean()
-
-
-class TemporalMultiClassFocalLoss(MultiClassFocalLoss):
-    """The temporal version of the MultiClassFocalLoss"""
-
-    IS_TEMPORAL = True
-
-    def forward(self, y_pred: torch.Tensor, y_true: torch.Tensor) -> float:
-        """
-        Args:
-            y_pred: net output with shape [T x B x NCLasses]
-            y_true: ground truth with shape [T x B]
-
-        Returns: the scalar loss value averaged over the batch
-        """
-        B, T, N = y_pred.shape
-        return sum(super(TemporalMultiClassFocalLoss, self).forward(y_pred[:, i], y_true[:, i]) for i in range(T))
 
 
 class LabelSmoothingLoss(Loss):

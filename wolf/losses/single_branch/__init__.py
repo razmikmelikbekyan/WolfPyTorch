@@ -4,7 +4,7 @@ import torch
 
 from .base import Loss
 from .pixel_level import PIXEL_LEVEL_LOSSES
-from .tile_level import TILE_LEVEL_LOSSES
+from .image_level import IMAGE_LEVEL_LOSSES
 from ...enums import TaskTypes
 
 
@@ -15,8 +15,8 @@ def get_single_branch_loss(task: TaskTypes, loss_name: str, **loss_kwargs: Dict)
         for k, v in loss_kwargs.items()
     }
 
-    if task in TaskTypes.get_tile_level_tasks():
-        loss_pool = TILE_LEVEL_LOSSES[task]
+    if task in TaskTypes.get_image_level_tasks():
+        loss_pool = IMAGE_LEVEL_LOSSES[task]
     elif task in TaskTypes.get_pixel_level_tasks():
         loss_pool = PIXEL_LEVEL_LOSSES[task]
     else:
