@@ -8,8 +8,8 @@ from ...helpers.mixture_density.commons import join_mdn_output, split_mdn_output
 from ...single_branch.pixel_level.smp import PixelLevelSMPModel
 
 
-class TLMDNBottleneckHeadForSMP(nn.Module):
-    """Special tile level head that arises from the SMP Model bottleneck."""
+class ILMDNBottleneckHeadForSMP(nn.Module):
+    """Special image level head that arises from the SMP Model bottleneck."""
     _pooled_image_size = 4
 
     def __init__(self, in_channels: int, mixture_components: int):
@@ -35,7 +35,7 @@ class TLMDNBottleneckHeadForSMP(nn.Module):
         return x
 
 
-class MultiBranchPLSimpleTLBottleneckMDNSMPModel(PixelLevelSMPModel):
+class MultiBranchPLSimpleILBottleneckMDNSMPModel(PixelLevelSMPModel):
     """Multi branch SMP based model.
 
     The first branch outputs a Pixel Level result that may include on of the following tasks:
@@ -44,11 +44,11 @@ class MultiBranchPLSimpleTLBottleneckMDNSMPModel(PixelLevelSMPModel):
         - pixel level multi classification
         - pixel level quantile regression
 
-    The second branch outputs a Tile Level result for the following tasks:
-        - tile level MDN regression
+    The second branch outputs a Image Level result for the following tasks:
+        - image level MDN regression
     """
     PL_BRANCH_NAME = "_PL_SIMPLE_"
-    TL_BRANCH_NAME = "_TL_MDN_"
+    IL_BRANCH_NAME = "_IL_MDN_"
 
     def __init__(self, *args, mixture_components: int, **kwargs):
         super().__init__(*args, **kwargs)
@@ -57,7 +57,7 @@ class MultiBranchPLSimpleTLBottleneckMDNSMPModel(PixelLevelSMPModel):
 
     def get_mdn_head(self):
         in_channels = self.smp_model.encoder.out_channels[-1]
-        return TLMDNBottleneckHeadForSMP(in_channels, self.mixture_components)
+        return ILMDNBottleneckHeadForSMP(in_channels, self.mixture_components)
 
     def forward(self, x: torch.Tensor) -> Dict[str, torch.Tensor]:
         """Returns the outputs from 2 branches: simple pixel level and mdn from bottleneck."""
@@ -65,7 +65,7 @@ class MultiBranchPLSimpleTLBottleneckMDNSMPModel(PixelLevelSMPModel):
         decoder_output = self.smp_model.decoder(*features)
         pl_output = self.smp_model.segmentation_head(decoder_output)
         mdn_output = self.mdn_head(features[-1])
-        return {self.PL_BRANCH_NAME: pl_output, self.TL_BRANCH_NAME: mdn_output}
+        return {self.PL_BRANCH_NAME: pl_output, self.IL_BRANCH_NAME: mdn_output}
 
     def split_mdn_output(self, mdn_output: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """Splits the MDN output into pi, mean and sigma."""

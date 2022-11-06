@@ -4,16 +4,16 @@ import torch.nn as nn
 from ...helpers.weights.adjust_first_conv import patch_first_conv
 
 
-class TileLevelModel(nn.Module):
+class ImageLevelModel(nn.Module):
     """A simple model that is based on timm package (https://github.com/rwightman/pytorch-image-models).
     It is basically extract the features and uses linear layers at the end.
     In case of classification models it will output the raw logits - un-normalized probabilities
 
     It supports the following task types:
-        - tile level regression
-        - tile level binary classification
-        - tile level multi classification
-        - tile level quantile regression
+        - image level regression
+        - image level binary classification
+        - image level multi classification
+        - image level quantile regression
     """
 
     def __init__(self,

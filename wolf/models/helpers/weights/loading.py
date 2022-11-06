@@ -19,7 +19,7 @@ def load_model_from_path(model_instance: nn.Module, model_path: str or None) -> 
             except KeyError:
                 model_weights = checkpoint
 
-            # special case for TileLevelModel model
+            # special case for ImageLevelModel model
             if all(k.startswith('timm_model.') for k in model_instance.state_dict().keys()):
                 model_weights = {
                     (f"timm_model.{k}" if not k.startswith('timm_model.') else k): v

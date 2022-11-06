@@ -4,7 +4,7 @@ import torch
 from torch import nn as nn
 from torch.nn import functional as F
 
-from .base import TileLevelModel
+from .base import ImageLevelModel
 from ...helpers.mixture_density.commons import join_mdn_output, split_mdn_output
 
 
@@ -31,11 +31,11 @@ class TLMDNHead(nn.Module):
         return x
 
 
-class TileLevelMDNModel(TileLevelModel):
+class ImageLevelMDNModel(ImageLevelModel):
     """Simple tile level MDN model.
 
     It supports the following task types:
-        - tile level MDN regression
+        - image level MDN regression
     """
 
     def __init__(self, *args, mixture_components: int, **kwargs: Any):

@@ -4,13 +4,13 @@ from typing import Any
 import torch.nn as nn
 
 from .pixel_level import PIXEL_LEVEL_MODELS
-from .tile_level import TILE_LEVEL_MODELS
+from .image_level import TILE_LEVEL_MODELS
 from ...enums import TaskTypes
 
 
 def get_single_branch_model(task: TaskTypes, model_name: str, **model_kwargs: Any) -> nn.Module:
     """Returns a model instance."""
-    if task in TaskTypes.get_tile_level_tasks():
+    if task in TaskTypes.get_image_level_tasks():
         models_pool = TILE_LEVEL_MODELS
     elif task in TaskTypes.get_pixel_level_tasks():
         models_pool = PIXEL_LEVEL_MODELS

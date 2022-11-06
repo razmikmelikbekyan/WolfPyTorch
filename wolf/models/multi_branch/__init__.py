@@ -3,12 +3,12 @@ from typing import Any
 
 import torch.nn as nn
 
-from .smp import MultiBranchPLSimpleTLBottleneckMDNSMPModel
+from .smp import MultiBranchPLSimpleILBottleneckMDNSMPModel
 from ...enums import TaskTypes
 
 MULTI_BRANCH_MODELS = {
-    "MultiBranchPLSimpleTLBottleneckMDNSMPModel": {
-        "model_klass": MultiBranchPLSimpleTLBottleneckMDNSMPModel,
+    "MultiBranchPLSimpleILBottleneckMDNSMPModel": {
+        "model_klass": MultiBranchPLSimpleILBottleneckMDNSMPModel,
         "supported_tasks": (TaskTypes.MULTI_TASK,)
     },
 }
@@ -16,7 +16,6 @@ MULTI_BRANCH_MODELS = {
 
 def get_multi_branch_model(task: TaskTypes, model_name: str, **model_kwargs: Any) -> nn.Module:
     """Returns a model instance."""
-
     try:
         model_klass = MULTI_BRANCH_MODELS[model_name]['model_klass']
     except KeyError:
